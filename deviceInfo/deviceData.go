@@ -1,4 +1,4 @@
-package deviceInfo
+package DeviceInfo
 
 import (
 	"fmt"

@@ -1,11 +1,11 @@
 package main
 
 import (
-	"StoreDataFB/deviceInfo"
+	"StoreDataFB/DeviceInfo"
+	"StoreDataFB/Utility"
 	"StoreDataFB/entity"
 	"StoreDataFB/repository"
 	"StoreDataFB/uniqueNumber"
-	"StoreDataFB/utility"
 	"encoding/json"
 	"fmt"
 	"math/rand"
@@ -23,8 +23,8 @@ func StoreDeviceData(response http.ResponseWriter, request *http.Request) {
 
 	rand.Seed(time.Now().UnixNano())
 	unique_id := uniqueNumber.RandomString()          // 6 digit random string referral code
-	device_number := deviceInfo.DeviceNumber("Apple") // Generate serial number
-	device_id := utility.TrimString(device_number)    // Trim the string
+	device_number := DeviceInfo.DeviceNumber("Apple") // Generate serial number
+	device_id := Utility.TrimString(device_number)    // Trim the string
 
 	// Getting all serial numbers from the database
 	device_ids, err := repo.FindAllDeviceIDs()

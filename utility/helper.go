@@ -1,4 +1,4 @@
-package utility
+package Utility
 
 func TrimString(s string) string {
 	if len(s) > 0 && s[0] == '"' {
