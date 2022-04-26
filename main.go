@@ -14,7 +14,7 @@ func main() {
 	// router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 	// 	fmt.Fprintln(w, "App Running...")
 	// })
-	router.Handle("/", http.FileServer(http.Dir("./public")))
+	router.Handle("/", http.FileServer(http.Dir("./template")))
 	router.HandleFunc("/register", StoreDeviceData).Methods("POST")
 	router.HandleFunc("/listData", ListStoreData).Methods("GET")
 	log.Println("Server listening on port", port)

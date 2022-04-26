@@ -1,0 +1,36 @@
+<html>
+<title>Frontier Wallet</title>
+<head>
+    <link href="../assets/index.css" rel="stylesheet" type="text/css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1 style="text-align:center;">Welcome to FrontierWallet Referral</h1>
+    <p style="text-align:center;">Please click on the Continue button to Continue or Referr button to referr FrontierPay to your friends and Family</p>
+    <div class="clickablebutton">
+        <button class="postButton" >Register</button>
+        <button onclick="Referr()" class="button">Referr</button>
+    </div>
+    <script>
+        function Referr() {
+            window.location.href = "http://www.google.com";
+        }
+        $(document).ready(function () {
+            $('.postButton').click(function () {
+                $.ajax({
+                url: '/register',
+                type: 'post',
+                dataType: 'html',
+                data : { ajax_post_data: 'Posted'},
+                    success : function(data) {
+                        alert('Successfully Registered');
+                    },
+                    error : function(data) {
+                        alert('Device Already Registered');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
