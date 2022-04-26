@@ -7,7 +7,6 @@ import (
 	"StoreDataFB/repository"
 	"StoreDataFB/uniqueNumber"
 	"encoding/json"
-	"fmt"
 	"math/rand"
 	"net/http"
 	"time"
@@ -36,7 +35,7 @@ func StoreDeviceData(response http.ResponseWriter, request *http.Request) {
 	// checking current serial number is present in the database or not
 	if contains(device_ids, device_id) {
 		response.WriteHeader(409) // data already exists
-		fmt.Println(device_id, "this Device already exists")
+		json.NewEncoder(response).Encode("Device already exists")
 	} else {
 		record.DeviceID = device_id                  // Serial Number of the device
 		record.UniqueID = unique_id                  // Referral Code for particular user referral
