@@ -8,4 +8,5 @@ type ApiData struct {
 	WalletAddress  string `json:"wallet_address"`
 	ReferralsCount int64  `json:"referrals_count"`
 	RewardsEarned  int64  `json:"rewards_earned"`
+	DeviceType     string `json:"device_type"`
 }

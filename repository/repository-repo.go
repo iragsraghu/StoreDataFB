@@ -43,6 +43,7 @@ func (*repo) Save(referral *entity.ApiData) (*entity.ApiData, error) {
 		"WalletAddress":  referral.WalletAddress,
 		"ReferralsCount": referral.ReferralsCount,
 		"RewardsEarned":  referral.RewardsEarned,
+		"DeviceType":     referral.DeviceType,
 	})
 
 	if err != nil {
