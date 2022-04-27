@@ -23,8 +23,8 @@ func NewRepository() ApiDataRepository {
 }
 
 const (
-	projectId      string = "gofrontier2"
-	collectionName string = "api_datas"
+	projectId      string = "referral-db"
+	collectionName string = "referrals"
 )
 
 func (*repo) Save(referral *entity.ApiData) (*entity.ApiData, error) {
