@@ -400,7 +400,7 @@ func (s *Server) ServeConn(c net.Conn, opts *ServeConnOpts) {
 	if s.NewWriteScheduler != nil {
 		sc.writeSched = s.NewWriteScheduler()
 	} else {
-		sc.writeSched = NewPriorityWriteScheduler(nil)
+		sc.writeSched = NewRandomWriteScheduler()
 	}
 
 	// These start at the RFC-specified defaults. If there is a higher
@@ -2316,18 +2316,17 @@ type requestBody struct {
 	_             incomparable
 	stream        *stream
 	conn          *serverConn
-	closeOnce     sync.Once // for use by Close only
-	sawEOF        bool      // for use by Read only
-	pipe          *pipe     // non-nil if we have a HTTP entity message body
-	needsContinue bool      // need to send a 100-continue
+	closed        bool  // for use by Close only
+	sawEOF        bool  // for use by Read only
+	pipe          *pipe // non-nil if we have a HTTP entity message body
+	needsContinue bool  // need to send a 100-continue
 }
 
 func (b *requestBody) Close() error {
-	b.closeOnce.Do(func() {
-		if b.pipe != nil {
-			b.pipe.BreakWithError(errClosedBody)
-		}
-	})
+	if b.pipe != nil && !b.closed {
+		b.pipe.BreakWithError(errClosedBody)
+	}
+	b.closed = true
 	return nil
 }
 
