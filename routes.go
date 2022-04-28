@@ -1,7 +1,6 @@
 package main
 
 import (
-	"StoreDataFB/deviceInfo"
 	"StoreDataFB/entity"
 	"StoreDataFB/repository"
 	"StoreDataFB/uniqueNumber"
@@ -9,6 +8,7 @@ import (
 	"encoding/json"
 	"math/rand"
 	"net/http"
+	"runtime"
 	"time"
 )
 
@@ -23,9 +23,7 @@ func StoreDeviceData(response http.ResponseWriter, request *http.Request) {
 
 	rand.Seed(time.Now().UnixNano())
 	unique_id := uniqueNumber.RandomString() // 6 digit random string referral code
-	device_number := deviceInfo.DarwinDevice("Apple")
-	device_id = utility.TrimString(device_number)
-	// device_id = utility.DeviceTypes()        // Device types
+	device_id = utility.DeviceTypes()        // Device types
 	// Getting all serial numbers from the database
 	device_ids, err := repo.FindAllDeviceIDs()
 	if err != nil {
@@ -44,9 +42,9 @@ func StoreDeviceData(response http.ResponseWriter, request *http.Request) {
 		record.WalletAddress = "0x12WE12233EDDJJKJJ" // Wallet Address
 		record.ReferralsCount = 0                    // Referrals Count
 		record.RewardsEarned = 0                     // Rewards Earned
-		// record.DeviceType = runtime.GOOS             // Device Type
-		repo.Save(&record)                  // Save all data to firestore
-		response.WriteHeader(http.StatusOK) // Send response
+		record.DeviceType = runtime.GOOS             // Device Type
+		repo.Save(&record)                           // Save all data to firestore
+		response.WriteHeader(http.StatusOK)          // Send response
 		json.NewEncoder(response).Encode(record)
 	}
 }
