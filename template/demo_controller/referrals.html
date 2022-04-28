@@ -1,0 +1,30 @@
+<html>
+<title>Frontier Wallet</title>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1 style="text-align:center;">Referral Page</h1>
+    Referral Code <input type="text" value="{{ .}}"/>
+    Referral Link <input type="text" value="https://frontier.xyz/referrals?Id={{ .}}"/>
+
+    <script>
+        $(document).ready(function () {
+            $('.postButton').click(function () {
+                $.ajax({
+                url: '/register',
+                type: 'post',
+                dataType: 'html',
+                data : { ajax_post_data: 'Posted'},
+                    success : function(data) {
+                        alert('Successfully Registered');
+                    },
+                    error : function(data) {
+                        alert('Device Already Registered');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

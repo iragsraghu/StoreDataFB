@@ -39,3 +39,13 @@ func DeviceTypes() string {
 	}
 	return device_id
 }
+
+// Record exists or not
+func DeviceIDExist(s []string, str string) bool {
+	for _, v := range s {
+		if v == str {
+			return true
+		}
+	}
+	return false
+}

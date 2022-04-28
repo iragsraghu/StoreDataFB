@@ -32,7 +32,7 @@ func StoreDeviceData(response http.ResponseWriter, request *http.Request) {
 		return
 	}
 	// checking current serial number is present in the database or not
-	if contains(device_ids, device_id) {
+	if utility.DeviceIDExist(device_ids, device_id) {
 		response.WriteHeader(409) // data already exists
 		json.NewEncoder(response).Encode("Device already exists")
 	} else {
@@ -60,14 +60,4 @@ func ListStoreData(response http.ResponseWriter, request *http.Request) {
 	}
 	response.WriteHeader(http.StatusOK)
 	json.NewEncoder(response).Encode(records)
-}
-
-// Record exists or not
-func contains(s []string, str string) bool {
-	for _, v := range s {
-		if v == str {
-			return true
-		}
-	}
-	return false
 }
