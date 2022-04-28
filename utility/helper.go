@@ -9,3 +9,13 @@ func TrimString(s string) string {
 	}
 	return s
 }
+
+// Record exists or not
+func DeviceIDExist(s []string, str string) bool {
+	for _, v := range s {
+		if v == str {
+			return true
+		}
+	}
+	return false
+}

@@ -10,9 +10,9 @@ import (
 )
 
 type ApiDataRepository interface {
-	Save(post *entity.ApiData) (*entity.ApiData, error)
-	FindAll() ([]entity.ApiData, error)
-	FindAllDeviceIDs() ([]string, error)
+	Save(post *entity.ApiData) (*entity.ApiData, error) // Save
+	FindAll() ([]entity.ApiData, error)                 // return all records
+	FindAllDeviceIDs() ([]string, error)                // Find all device IDs
 }
 
 type repo struct{}
