@@ -5,18 +5,16 @@
 </head>
 <body>
     <h1 style="text-align:center;">Referral Page</h1>
-    Referral Code <input type="text" value="{{ .}}"/>
-    Referral Link <input type="text" value="https://frontier.xyz/referrals?Id={{ .}}"/>
 
     <div style="display: flex;justify-content: center;">
         <div style="position: relative;width: 400px;margin: 10px;">
             <label>Referal Code</label>
-            <input class="text" style="width: 100%; padding: 10px;" value="Hello I'm some text">
+            <input class="text" style="width: 100%; padding: 10px;" value="{{ .}}">
             <button class="copyTextButton" style="position: absolute;top: 28px;right: 10px;">Copy</button>
         </div>
         <div style="position: relative;width: 400px;margin: 10px;">
             <label>Link</label>
-            <input class="text" style="width: 100%; padding: 10px;" value="https://www.w3schools.com/jquery/jquery_get_started.asp">
+            <input class="text" style="width: 100%; padding: 10px;" value="https://frontier.xyz/referrals?Id={{ .}}">
             <button class="copyTextButton" style="position: absolute;top: 28px;right: 10px;">Copy</button>
         </div>
     </div>
