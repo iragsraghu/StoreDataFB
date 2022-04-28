@@ -35,9 +35,9 @@
 </head>
 <body>
     <h1 style="text-align:center;">Welcome to FrontierWallet Referral</h1>
-    <p style="text-align:center;">Please click on the Continue button to Continue or Referr button to referr FrontierPay to your friends and Family</p>
+    <p style="text-align:center;">Please click on the Generate button to Continue or Referr button to referr FrontierPay to your friends and Family</p>
     <div class="clickablebutton">
-        <button class="postButton" >Register</button>
+        <button class="postButton" >Generate</button>
         <a href="http://localhost:8000/referrals">Referrer</a>
     </div>
     <script>
@@ -52,10 +52,10 @@
                 dataType: 'html',
                 data : { ajax_post_data: 'Posted'},
                     success : function(data) {
-                        alert('Successfully Registered');
+                        alert('Successfully Generated');
                     },
                     error : function(data) {
-                        alert('Device Already Registered');
+                        alert('Device already used');
                     }
                 });
             });
